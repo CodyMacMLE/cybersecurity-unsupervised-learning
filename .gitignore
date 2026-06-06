@@ -222,3 +222,6 @@ data/
 
 # env
 *.joblib.bak
+
+.idea/
+notebooks/KDDTrain+.csv

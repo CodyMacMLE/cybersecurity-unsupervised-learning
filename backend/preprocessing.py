@@ -72,11 +72,3 @@ def load_predict_data(file) -> pd.DataFrame:
         raise OmittedColumnsError(f"Omitted Columns: Expects '{omitted_cols}'")
 
     return df
-
-df = pd.read_csv('../data/raw/nsl-kdd/KDDTrain+.csv', header=None, names=COLUMNS)
-
-normal = df[df['attack'] == 'normal'][FEATURE_COLUMNS].head(3)
-attacks = df[df['attack'] != 'normal'][FEATURE_COLUMNS].head(2)
-
-sample = pd.concat([normal, attacks])
-sample.to_excel('Data_Template.xlsx', index=False)
