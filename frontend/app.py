@@ -5,7 +5,6 @@ import pandas as pd
 from pathlib import Path
 
 API_URL = os.environ.get("API_URL", "http://localhost:8000")
-
 TEMPLATE_PATH = os.path.join(os.path.dirname(__file__), "Data_Template.xlsx")
 
 def create_row(anomaly):
@@ -26,7 +25,8 @@ def call_predict(file):
     with open(file, 'rb') as f:
         response = requests.post(
             f"API_URL/predict",
-            files={"file": f}
+            files={"file": f},
+            timeout=60
         )
 
         if response.status_code != 200:
