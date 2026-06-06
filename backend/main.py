@@ -8,6 +8,10 @@ from schema import create_json_res
 
 app = FastAPI()
 
+@app.get("/health")
+async def health():
+    return {"status": "ok",}
+
 @app.post("/predict")
 async def predict_anomalies(file: UploadFile):
     try:
